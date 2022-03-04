@@ -67,18 +67,19 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-    - name: Update feedsq
-      run: cd openwrt && ./scripts/feeds update packages
-      
+        
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
-      
-    - name: Install feedsq
-      run: cd openwrt && ./scripts/feeds install -a -p packages
     
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a -f
-
+      
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+    
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a -f
+      
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
